@@ -34,23 +34,32 @@ int findApxAvg(int *nums, int start, int end, float target) {
 }
 
 int getMinimumSquareDiff(int *nums, int start, int end) {
-
+	int subtotal = 0;
 	if (start == end)
 		return nums[start];
 
 	int apxAvgidx = findApxAvg(nums, start, end, (nums[start] + nums[end]) / 2);
-	int tmp[3] = { 0,0,0 };
-	for (int i = -1; i <= 1; i++) {
-		for (int j = start; j <= end; j++) {
-			if (apxAvgidx + i >= j)
-				tmp[i + 1] += nums[apxAvgidx + i] - nums[j];
-			else
-				tmp[i + 1] += nums[j] - nums[apxAvgidx + i];
-		}
-	}
-	sort(tmp, tmp + 3);
+	//int tmp[3] = { 0,0,0 };
+	//for (int i = -1; i <= 1; i++) {
+	//	for (int j = start; j <= end; j++) {
+	//		if (apxAvgidx + i >= j)
+	//			tmp[i + 1] += nums[apxAvgidx + i] - nums[j];
+	//		else
+	//			tmp[i + 1] += nums[j] - nums[apxAvgidx + i];
+	//	}
+	//}
+	//sort(tmp, tmp + 3);
 
-	return tmp[0] * tmp[0];
+	//return tmp[0] * tmp[0];
+	for(int i=start; i<=end; i++) {
+		if(apxAvgidx>=i)
+			subtotal += (nums[apxAvgidx] - nums[i]) * (nums[apxAvgidx]-nums[i]);
+		else
+			tmp[i + 1] += nums[j] - nums[apxAvgidx + i];
+		subtotal +=  
+	}
+	
+	return 
 }
 
 
@@ -65,7 +74,7 @@ int main() {
 
 	for (int i = 0; i < c; i++) {
 		cin >> n >> s;
-		cout << n << "," << s;
+	//	cout << n << "," << s;
 		if (n<s)throw "Not allowed input n, s";
 
 		//initalize array in sorted
@@ -79,7 +88,7 @@ int main() {
 
 
 		for (int i = 0; i < n; i++) {
-			if (i == 0) pairs[0] = make_pair(0, -1);
+			if (i == 0) pairs[0] = make_pair(0, INT_MAX);
 			else
 				pairs[i] = make_pair(i, N[i] - N[i - 1]);
 		}
@@ -88,24 +97,20 @@ int main() {
 		sort(pairs, pairs + n, pairCompByDiff);
 		printPairs(pairs, n);
 
-		//re-sort 0~s order by index-number in pairs, using stable_sort
-		stable_sort(pairs, pairs + s, pairCompByIdx); 
+
+///////////1. pairs에 저장된 인덱스-1값 기준으로 잘라야 한다.
+		//re-sort 0~s-1 order by index-number in pairs, using stable_sort
+		stable_sort(pairs, pairs + s, pairCompByIdx);
 		printPairs(pairs, n);
 
 
-		//1. pairs에 저장된 인덱스-1값 기준으로 잘라야 한다.
+		
 
 		//calculate
 		for (int i = 0; i<s - 1; i++) {
-			if (i == 0) {
-				sum_squre_diff = getMinimumSquareDiff(N, 0, pairs[1].first);
-				//pairs[i].first-0 = 0인경우. 즉 구간 내 수가 1개밖에 없는 경운
-			}
-			else {
-				sum_squre_diff += getMinimumSquareDiff(N, pairs[i].first + 1, pairs[i + 1].first);
-				//구간 내 수가 1개밖에 없는 경우
-			}
+			sum_squre_diff += getMinimumSquareDiff(N,pairs[i].first,pairs[i+1].first-1);
 		}
+		sum_squre_diff += getMinimumSquareDiff(N,pairs[i].first,n-1);
 		cout << sum_squre_diff << endl;
 	}
 	return 0;
