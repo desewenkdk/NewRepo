@@ -52,14 +52,15 @@ int getMinimumSquareDiff(int *nums, int start, int end) {
 
 	//return tmp[0] * tmp[0];
 	for(int i=start; i<=end; i++) {
-		if(apxAvgidx>=i)
-			subtotal += (nums[apxAvgidx] - nums[i]) * (nums[apxAvgidx]-nums[i]);
-		else
-			tmp[i + 1] += nums[j] - nums[apxAvgidx + i];
-		subtotal +=  
+//		if(apxAvgidx>=i)
+//			/*subtotal += (nums[apxAvgidx] - nums[i]) * (nums[apxAvgidx]-nums[i]);*/
+////		else
+//			tmp[i + 1] += nums[j] - nums[apxAvgidx + i];
+//		subtotal +=  
+			subtotal += (nums[apxAvgidx]-nums[i]) * (nums[apxAvgidx]-nums[i]);
 	}
 	
-	return 
+	return subtotal;
 }
 
 
