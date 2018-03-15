@@ -101,6 +101,14 @@ int main() {
 
 ///////////1. pairs에 저장된 인덱스-1값 기준으로 잘라야 한다.
 		//re-sort 0~s-1 order by index-number in pairs, using stable_sort
+		
+		/*잘못된부분 - 배열의 구간을 나눈 다음에, 어느 구간을 기준으로 양자화를 진행할 지 알아내야 한다.
+					가장 구간 차가 큰 부분들을 기준으로 나눈 부분배열을 이용한 계산부터 진행.
+
+					구간차가 모두 같다 --- 부분 배열의 크기가 균등해지도록 나눈다.
+		
+		*/
+		
 		stable_sort(pairs, pairs + s, pairCompByIdx);
 		printPairs(pairs, n);
 
