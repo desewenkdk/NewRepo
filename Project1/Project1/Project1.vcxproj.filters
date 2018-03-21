@@ -18,5 +18,11 @@
     <ClCompile Include="Quantization.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ZIMBABWE.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="LISprint.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
