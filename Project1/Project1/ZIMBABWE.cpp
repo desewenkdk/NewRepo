@@ -72,7 +72,7 @@ int func1 (int start_EP_index) {
 					break;
 			}
 		}
-
+	return result;
 }
 
 int arrayToInteger (int length) {
