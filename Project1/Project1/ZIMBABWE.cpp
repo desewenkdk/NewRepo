@@ -33,35 +33,36 @@ int main () {
 int func1 (int start_EP_index) {
 	int start = 0;
 
-	//o_P에서 순회하면서 현재 자릿수에 들어갈 숫자하나를 정해서 넣는다.
-	//for문은 generatedCandPrice를 완성하는 단계.
-	for (; start < getInput.length; start++) {
-		if (checkDigit[start] < 1) {
-			checkDigit[start] = 1;
-			generatedCandPrice.push_back(orderedPlate[start+1]);
+	
+	if (start_EP_index >= getInput.length) {
+		/*
+		여긴 generatedCandPrice가 다 채워진 다음에 이루어져야 하는 작업이다.
+		*/
+		//숫자가 다 들어감.
+		int candPrice = arrayToInteger (getInput.length);
 
-			//더 이상 큰 수가 와선 안된다.->단계를 다음으로 넘긴다.
-			if(orderedPlate[start] >= eggPrice[start_EP_index]){
-				//???
-				func1 (start_EP_index++);
-				break;
-			}
-
-			//전수탐색
-			else {
-				
-			}
+		//마지막으로 m에 대한 배수 여부를 체크한다.
+		if (candPrice % m == 0) {
+			result++;
 		}
-	}
 
-	//숫자가 다 들어감.
-	int candPrice = arrayToInteger (getInput.length);
-
-	//마지막으로 m에 대한 배수 여부를 체크한다.
-	if (candPrice % m == 0) {
-		generatedCandPrice.pop_back;
-		return result++;
+		checkDigit[];
 	}
 	else
-		return result;
+		//o_P에서 순회하면서 현재 자릿수에 들어갈 숫자하나를 정해서 넣는다.
+		//for문은 generatedCandPrice를 구성하는 부분이다.
+		for (; start < getInput.length; start++) {
+			if (checkDigit[start] < 1) {
+				checkDigit[start] = 1;
+				generatedCandPrice.push_back (orderedPlate[start + 1]);
+				func1 (start_EP_index++);
+
+
+				if (orderedPlate[start] > eggPrice[start_EP_index])
+					break;
+			}
+		}
+
 }
+
+	
