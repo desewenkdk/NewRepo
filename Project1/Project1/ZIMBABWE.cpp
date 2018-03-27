@@ -44,7 +44,7 @@ int main () {
 }
 
 int func1 (int start_EP_index) {
-
+	int start;
 	if (start_EP_index >= getInput.size()) {
 		/*
 		여긴 generatedCandPrice가 다 채워진 다음에 이루어져야 하는 작업이다.
@@ -62,20 +62,20 @@ int func1 (int start_EP_index) {
 		}
 
 	}
-	else
+	else {
 		//o_P에서 순회하면서 현재 자릿수에 들어갈 숫자하나를 정해서 넣는다.
 		//for문은 generatedCandPrice를 구성하는 부분이다.
-		for (int start=0; start < getInput.size(); start++) {
+		for (start = 0; start < getInput.size (); start++) {
 			if (checkDigit[start] < 1) {
 				checkDigit[start] = 1;
 				generatedCandPrice.push_back (orderedPlate[start]);
-				
-				func1 (start_EP_index+1);
+
+				func1 (start_EP_index + 1);
 
 				//순회 후 원복.
 
 				//has to fix  ex)4628 ->2468->2486nocheck
-				generatedCandPrice.pop_back();
+				generatedCandPrice.pop_back ();
 				checkDigit[start] = 0;
 
 				//fix.
@@ -83,6 +83,8 @@ int func1 (int start_EP_index) {
 					break;
 			}
 		}
+
+	}
 	return result;
 }
 
