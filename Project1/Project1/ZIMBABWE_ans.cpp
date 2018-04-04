@@ -26,5 +26,11 @@ void generate (string price, bool taken[]) {
 	1. 없거나 2.이번 자릿수랑 다르거나 3.이미 사용되고 남은경우*/
 	
 	//기저사례 - 완성된 후.
-	if(price.size == n)
+	if (price.size == n) {
+		//1
+		if ((price < e) && stoi (price) % m == 0) {
+			sum++;
+			return;
+		}
+	}
 }

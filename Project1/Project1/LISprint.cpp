@@ -2,19 +2,20 @@
 #include <vector>
 using namespace std;
 
-//cache[0] = INT_MAX, cache[i]에는, i에서부터 시작하는 부분수열 중 가장 긴 부분수열의 길이.가 저장.
-//choices[i]에는, LIS의 i번째(0부터시작) 숫자를 나타내는 인덱스가 저장되어있다. 
+//cache[0] = INT_MAX, cache[i]에는, i에서부터 시작하는 부분수열 중 가장 긴 부분수열'의 길이'.가 저장.
+//choices[i]에는, LIS의 i번째(0부터시작) 숫자를 '가리키는 인덱스(S에서 찾자.)'가 저장되어있다. 
 int n,S[100],choices[101],cache[101];
 
 int lis4(int start) {
-	int &ret = cache[start+1];
+	int &ret = cache[start+1]; //ret은 cache[start+1]을 바라본다. ret수정하면 cached[]가 수정됨.
 	if(ret!=-1) return ret;
 	
 	ret=1;
 	int bestNext = -1;
 
 	for(int next = start+1; next<n; next++) {
-		/*수열을 돌면서 수열의 길이가 가장 긴 오름차순 수열이 될 가능성이 있는 경우, (S[start]보다 큰 수가 나옴)
+		/*
+		수열을 돌면서 수열의 길이가 가장 긴 오름차순 수열이 될 가능성이 있는 경우, (S[start]보다 큰 수가 나옴)
 		거기서 다시 부분수열로 쪼개서 생각한다. S[next]가 추가되므로 길이는 +1된다
 		*/
 		//start=-1인경우, 처음 함수가 호출된 경우로, 이 경우에는 재귀를 돌게 한다.
