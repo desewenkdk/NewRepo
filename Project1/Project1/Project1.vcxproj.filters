@@ -24,5 +24,19 @@
     <ClCompile Include="LISprint.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="forPL.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="forPL_easy.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="x64\Debug\forPL.asm">
+      <Filter>소스 파일</Filter>
+    </None>
+    <None Include="x64\Debug\forPL_easy.asm">
+      <Filter>소스 파일</Filter>
+    </None>
   </ItemGroup>
 </Project>
