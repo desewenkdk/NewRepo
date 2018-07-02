@@ -12,7 +12,7 @@ std::vector<color> v ={ red, green, blue };
 int colorhome(color precolor, int precostSum, int houseindex); //참조적 투명성을 지키기 위해 houseindex를 파라미터로 넘겨주자.(별로 의미는 없다.)
 int min(color precolor);
 
-void main() {
+int main() {
 
 	scanf("%d", &num_house);
 	for(int i=0; i<num_house; i++) {
@@ -31,7 +31,7 @@ void main() {
 			ret = cand;
 	}
 	printf("%d", ret);
-
+	return 0;
 }
 
 int colorhome(color precolor, int precostSum, int houseindex) {
