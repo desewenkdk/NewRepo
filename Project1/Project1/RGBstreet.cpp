@@ -2,28 +2,27 @@
 #include <stdlib.h>
 #include <vector>
 #define INT_MAX 1001
-typedef enum color {red, green, blue};
-int house[1000][3]; //house[0][red] = 0¹øÂ° ÁıÀÇ red¿¡ ´ëÇÑ ºñ¿ë
+typedef enum color { red, green, blue };
+int house[1000][3]; //house[0][red] = 0ë²ˆì§¸ ì§‘ì˜ redì— ëŒ€í•œ ë¹„ìš©
 int num_house;
-int ret = 3001;
+int ret = 10000001;
 int cand;
 std::vector<color> v ={ red, green, blue };
 
-int colorhome(color precolor, int precostSum, int houseindex); //ÂüÁ¶Àû Åõ¸í¼ºÀ» ÁöÅ°±â À§ÇØ houseindex¸¦ ÆÄ¶ó¹ÌÅÍ·Î ³Ñ°ÜÁÖÀÚ.(º°·Î ÀÇ¹Ì´Â ¾ø´Ù.)
+int colorhome(color precolor, int precostSum, int houseindex); //ì°¸ì¡°ì  íˆ¬ëª…ì„±ì„ ì§€í‚¤ê¸° ìœ„í•´ houseindexë¥¼ íŒŒë¼ë¯¸í„°ë¡œ ë„˜ê²¨ì£¼ì.(ë³„ë¡œ ì˜ë¯¸ëŠ” ì—†ë‹¤.)
 int min(color precolor);
 
 void main() {
-	
+
 	scanf("%d", &num_house);
 	for(int i=0; i<num_house; i++) {
 		for(color c : v) {
-			scanf("%d",&house[i][c]);
+			scanf("%d", &house[i][c]);
 		}
 	}
 
 	for(color c: v) {
 		int firstCost = house[0][c];
-
 		if(firstCost > ret)
 			continue;
 
@@ -31,7 +30,7 @@ void main() {
 		if(cand < ret)
 			ret = cand;
 	}
-	printf("%d",ret);
+	printf("%d", ret);
 
 }
 
@@ -41,12 +40,16 @@ int colorhome(color precolor, int precostSum, int houseindex) {
 
 	if(houseindex == num_house-1) {
 		//compare value (precostSum + lastcost) with ret
-		//update or not ret
+		//update or preserve ret
+		int candidate = precostSum + min(precolor);
+		if(candidate < ret)
+			ret = candidate;
+		return ret;
 	}
 
 	for(color c:v) {
 		if(c == precolor) continue;
-		ca
+		ret = colorhome(c,precostSum+house[houseindex][c], houseindex+1);
 	}
 }
 
